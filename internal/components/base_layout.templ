@@ -1,0 +1,23 @@
+package components
+
+templ header(title string) {
+	<html lang="es" class="dark">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>{ title }</title>
+			<link href="/static/css/tailwind.css" rel="stylesheet"/>
+			<script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+		</head>
+	</html>
+}
+
+templ BaseLayout(contents templ.Component, title string) {
+	@header(title)
+	<body class="min-h-screen flex flex-col items-center justify-center">
+		<main>
+			@contents
+		</main>
+	</body>
+}
