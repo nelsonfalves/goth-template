@@ -28,7 +28,7 @@ cd goth-template
 To start the development environment, use:
 
 ```sh
-make run
+make dev
 ```
 
 Alternativaly, if you want to build your application, use:

@@ -1,6 +1,5 @@
 FROM golang:1.23.2-alpine
 
-# Variáveis de ambiente para controlar o comportamento
 ARG ENVIRONMENT=development
 ENV ENVIRONMENT=${ENVIRONMENT}
 
