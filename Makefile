@@ -17,13 +17,19 @@ run:
 	@concurrently "make templ" "make css" "air"
 
 dev:
-	@docker build --build-arg ENVIRONMENT=development -t goth-image .
-	@docker run -d -p 8080:8080 -p 8081:8081 -v $(shell pwd):/app goth-image
-	@sleep 2
-	@xdg-open http://localhost:$(TEMPL_PROXY_PORT) > /dev/null 2>&1 &
+	@set -e; \
+	docker build --build-arg ENVIRONMENT=development -t goth-image .; \
+	docker run -d -p 8080:8080 -p 8081:8081 -v $(shell pwd):/app goth-image; \
+	until curl --silent --fail http://localhost:8081; do \
+		sleep 1; \
+	done; \
+	xdg-open http://localhost:8081 > /dev/null 2>&1 &
 
 docker-build:
-	@docker build --build-arg ENVIRONMENT=production -t goth-image .
-	@docker run -d -p 8080:8080 goth-image
-	@sleep 2
-	@xdg-open http://localhost:8080 > /dev/null 2>&1 &
+	@set -e; \
+	docker build --build-arg ENVIRONMENT=production -t goth-image .; \
+	docker run -d -p 8080:8080 goth-image; \
+	until curl --silent --fail http://localhost:8080; do \
+		sleep 1; \
+	done; \
+	xdg-open http://localhost:8080 > /dev/null 2>&1 &
