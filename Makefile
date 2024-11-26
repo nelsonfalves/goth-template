@@ -23,7 +23,7 @@ dev:
 	@xdg-open http://localhost:$(TEMPL_PROXY_PORT) > /dev/null 2>&1 &
 
 docker-build:
-	@docker build --build-arg ENVIRONMENT=build -t goth-image .
+	@docker build --build-arg ENVIRONMENT=production -t goth-image .
 	@docker run -d -p 8080:8080 goth-image
 	@sleep 2
 	@xdg-open http://localhost:8080 > /dev/null 2>&1 &
