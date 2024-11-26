@@ -1,6 +1,5 @@
 FROM golang:1.23.2-alpine
 
-ARG ENVIRONMENT=development
 ENV ENVIRONMENT=${ENVIRONMENT}
 
 RUN apk update && apk add --no-cache \
