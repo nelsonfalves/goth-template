@@ -1,0 +1,5 @@
+.env
+
+bin/
+
+internal/frontend/static/css/tailwind.css

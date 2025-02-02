@@ -1,0 +1,36 @@
+package templates
+
+templ header(title string) {
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description" content="Your site description"/>
+		<meta name="robots" content="index, follow"/>
+		<title>{ title }</title>
+		<link rel="icon" type="image/x-icon" href="/frontend/static/favicon.ico"/>
+		<link href="/frontend/static/css/tailwind.css" rel="stylesheet"/>
+		<script defer src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+	</head>
+}
+
+templ BaseLayout(contents templ.Component, title string) {
+	<!DOCTYPE html>
+	<html lang="en">
+		@header(title)
+		<body class="min-h-screen bg-gray-50 dark:bg-gray-900">
+			<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4">
+				Skip to main content
+			</a>
+			<nav class="w-full bg-white dark:bg-gray-800 shadow-md">
+				// Your navigation content
+			</nav>
+			<main id="main-content" class="container mx-auto px-4 py-8">
+				@contents
+			</main>
+			<footer class="w-full bg-white dark:bg-gray-800 shadow-md mt-auto">
+				// Your footer content
+			</footer>
+		</body>
+	</html>
+}
