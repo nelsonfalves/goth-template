@@ -25,7 +25,7 @@ git clone https://github.com/nelsonfalves/goth-template.git
 cd goth-template
 ```
 
-To start the development environment, use:
+To start the development container, use:
 
 ```sh
 make dev
@@ -44,7 +44,3 @@ The project can then be accessed at:
 
 -    **http://localhost:8080**: The default port for the application.
 -    **http://localhost:8081**: The port for the Templ proxy (recommended during development, for all the hot reload benefits).
-
-```
-
-```
